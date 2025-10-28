@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  productos-service:
+    build: ./productos
+    container_name: productos-service
+    ports:
+      - "8081:8081"
+    networks:
+      - micro-net
+
+  inventario-service:
+    build: ./inventario
+    container_name: inventario-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - productos-service
+    environment:
+      - PRODUCTOS_URL=http://productos-service:8081/productos/
+    networks:
+      - micro-net
+
+networks:
+  micro-net:
+    driver: bridge

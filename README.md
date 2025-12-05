@@ -1,6 +1,5 @@
 Instrucciones de la instalacion:
 1. abrir la terminal en la carpeta y poner el siguiente 
-  -mvn clean package -DskipTests
   -docker compose up --build
 2. probar de la coleccion adjunta para probar los endpoints.
 
